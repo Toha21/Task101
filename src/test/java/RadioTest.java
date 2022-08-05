@@ -1,4 +1,5 @@
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
@@ -13,7 +14,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentStation();
         int expected = 0;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -25,7 +26,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentStation();
         int expected = 1;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -37,7 +38,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentStation();
         int expected = 8;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -48,7 +49,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentStation();
         int expected = 9;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -59,7 +60,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentStation();
         int expected = 9;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -70,20 +71,20 @@ public class RadioTest {
 
         int actual = radio.getCurrentStation();
         int expected = 1;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
 
     public void increaseVolumeTest() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(8);
+        radio.setCurrentVolume(9);
 
         radio.increaseVolume();
 
         int actual = radio.getCurrentVolume();
-        int expected = 9;
-        Assertions.assertEquals(actual, expected);
+        int expected = 10;
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -95,11 +96,23 @@ public class RadioTest {
 
         int actual = radio.getCurrentVolume();
         int expected = 0;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
-    public void exceedsVolumeTest1() {
+    public void maxVolumeTest() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(10);
+
+        radio.increaseVolume();
+
+        int actual = radio.getCurrentVolume();
+        int expected = 10;
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void exceedingTheMaxVolumeTest2() {
         Radio radio = new Radio();
         radio.setCurrentVolume(12);
 
@@ -107,7 +120,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentVolume();
         int expected = 1;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -119,7 +132,7 @@ public class RadioTest {
 
         int actual = radio.getCurrentVolume();
         int expected = 0;
-        Assertions.assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
 }
